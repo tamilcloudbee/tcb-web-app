@@ -5,59 +5,76 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TamilCloudbee</title>
     <style>
-        /* Set the background color to burgundy */
+        /* Set the background color to white */
         body {
-            background-color: #800020; /* Burgundy color */
+            background-color: #fff; /* White color */
             margin: 0;
+            font-family: Arial, sans-serif;
+            height: 100vh;
             display: flex;
-            flex-direction: column;
             justify-content: center;
             align-items: center;
-            height: 100vh;
-            font-family: Arial, sans-serif;
-            padding-top: 50px; /* Ensures content doesn't hide behind the fixed menu */
         }
 
-        /* Style for the menu */
+        /* Style for the menu bar */
         .menu-bar {
-            background-color: #600016;
-            position: fixed; /* Keeps the menu bar fixed at the top */
+            background-color: #fff;
+            padding: 10px 20px;
+            display: flex;
+            justify-content: flex-end; /* Align menu links to the right */
+            align-items: center;
+            position: fixed;
             top: 0;
             width: 100%;
-            padding: 10px;
-            z-index: 1000; /* Ensures the menu is on top of other content */
-            text-align: right; /* Aligns the links to the right */
+            z-index: 10;
+            box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.1);
         }
 
+        /* Menu links */
         .menu-bar a {
-            color: white;
-            font-size: 18px;
-            margin: 0 20px;
             text-decoration: none;
+            color: #800020; /* Burgundy color */
+            margin: 0 15px;
+            font-weight: bold;
         }
 
         .menu-bar a:hover {
             text-decoration: underline;
         }
 
-        /* Style for the text */
-        .center-text {
-            color: white;
-            font-size: 80px;
-            font-weight: bold;
-            margin-top: 150px; /* Adds space below the menu bar */
+        /* Wrapper for the logo with burgundy border */
+        .logo-wrapper {
+            border: 5px solid #800020; /* Burgundy border */
+            padding: 20px; /* Space between the logo and border */
+            border-radius: 10px; /* Rounded corners */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* Logo styling */
+        .logo {
+            height: 500px; /* Set logo height to 500px */
         }
     </style>
 </head>
 <body>
+
+    <!-- Menu Bar -->
     <div class="menu-bar">
-        <a href="register/index.html">Register</a>
-        <a href="contact.html">Contact</a>
+        <!-- Menu Links aligned to the right -->
+        <div>
+            <a href="index.html">Home</a>
+            <a href="register/index.html">Register</a>
+            <a href="#">Contact</a>
+        </div>
     </div>
 
-    <div class="center-text">
-        TamilCloudbee
+    <!-- Logo Wrapper with Burgundy Border -->
+    <div class="logo-wrapper">
+        <img src="images/tcb-logo.png" alt="TamilCloudbee Logo" class="logo">
     </div>
+
 </body>
 </html>
 

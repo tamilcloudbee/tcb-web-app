@@ -13,6 +13,7 @@
             align-items: center;
             height: 100vh;
             margin: 0;
+            flex-direction: column;
         }
 
         .enquiry-container {
@@ -63,11 +64,35 @@
             font-size: 14px;
             margin-top: 10px;
         }
+
+        /* Wrapper for the logo with burgundy border inside the enquiry container */
+        .logo-wrapper {
+            border: 5px solid #800020; /* Burgundy border */
+            padding: 10px; /* Space between the logo and border */
+            border-radius: 10px; /* Rounded corners */
+            margin-bottom: 20px; /* Add space between the logo and form */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* Logo styling */
+        .logo {
+            height: 300px; /* Set logo height to 300px */
+        }
     </style>
 </head>
 <body>
+
+    <!-- Enquiry Form Container -->
     <div class="enquiry-container">
+        <!-- Logo Wrapper with Burgundy Border -->
+        <div class="logo-wrapper">
+            <img src="../images/tcb-logo.png" alt="TamilCloudbee Logo" class="logo">
+        </div>
+
         <h2>Student Course Enquiry</h2>
+        
         <!-- Enquiry Form -->
         <form id="enquiryForm" onsubmit="return submitEnquiry()">
             <input type="text" id="studentName" class="input-field" placeholder="Enter your name" required><br>
@@ -117,5 +142,7 @@
             return false; // Prevent form from refreshing the page
         }
     </script>
+
 </body>
 </html>
+
