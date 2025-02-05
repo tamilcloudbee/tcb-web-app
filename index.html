@@ -15,14 +15,18 @@
             align-items: center;
             height: 100vh;
             font-family: Arial, sans-serif;
+            padding-top: 50px; /* Ensures content doesn't hide behind the fixed menu */
         }
 
         /* Style for the menu */
         .menu-bar {
             background-color: #600016;
+            position: fixed; /* Keeps the menu bar fixed at the top */
+            top: 0;
             width: 100%;
             padding: 10px;
-            text-align: center;
+            z-index: 1000; /* Ensures the menu is on top of other content */
+            text-align: right; /* Aligns the links to the right */
         }
 
         .menu-bar a {
@@ -41,7 +45,7 @@
             color: white;
             font-size: 80px;
             font-weight: bold;
-            margin-top: 100px;
+            margin-top: 150px; /* Adds space below the menu bar */
         }
     </style>
 </head>
@@ -56,3 +60,4 @@
     </div>
 </body>
 </html>
+
