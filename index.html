@@ -12,8 +12,9 @@
             font-family: Arial, sans-serif;
             height: 100vh;
             display: flex;
-            justify-content: center;
+            flex-direction: column; /* Stack content vertically */
             align-items: center;
+            justify-content: flex-start; /* Align at the top */
         }
 
         /* Style for the menu bar */
@@ -50,11 +51,60 @@
             display: flex;
             justify-content: center;
             align-items: center;
+            margin-top: 80px; /* Space below the fixed menu bar */
         }
 
         /* Logo styling */
         .logo {
-            height: 500px; /* Set logo height to 500px */
+            height: 300px; /* Set logo height to 300px */
+            width: auto; /* Maintain aspect ratio */
+        }
+
+        /* New section for AWS, Jenkins, and DevOps with burgundy border */
+        .section-wrapper {
+            display: flex;
+            justify-content: center; /* Align the sections horizontally */
+            flex-wrap: wrap; /* Allow sections to wrap if necessary */
+            gap: 20px; /* Space between sections */
+            margin-top: 50px;
+        }
+
+        .section {
+            border: 5px solid #800020; /* Burgundy border */
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            width: 200px; /* Width of each section */
+        }
+
+        .section img {
+            max-height: 100px; /* Limit the height of the logos */
+            width: auto; /* Maintain aspect ratio */
+            margin-bottom: 10px; /* Space below the logo */
+        }
+
+        .section h3 {
+            color: #800020; /* Burgundy color */
+            font-size: 18px;
+            margin-top: 10px;
+        }
+
+        /* Register Button Styling */
+        .register-btn {
+            background-color: #800020; /* Burgundy color */
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            margin-top: 15px;
+            font-size: 14px;
+            cursor: pointer;
+            border-radius: 5px;
+            text-align: center;
+            text-decoration: none;
+        }
+
+        .register-btn:hover {
+            background-color: #6a001f; /* Darker burgundy on hover */
         }
     </style>
 </head>
@@ -73,6 +123,37 @@
     <!-- Logo Wrapper with Burgundy Border -->
     <div class="logo-wrapper">
         <img src="images/tcb-logo.png" alt="TamilCloudbee Logo" class="logo">
+    </div>
+
+    <!-- New Sections for AWS, Jenkins, and DevOps -->
+    <div class="section-wrapper">
+        <!-- AWS Section -->
+        <div class="section">
+            <img src="images/aws-logo.png" alt="AWS Cloud Computing Logo">
+            <h3>AWS Cloud Computing</h3>
+            <a href="register/index.html" class="register-btn">Register</a>
+        </div>
+
+        <!-- Jenkins Section -->
+        <div class="section">
+            <img src="images/jenkins-logo.png" alt="Jenkins Logo">
+            <h3>Jenkins</h3>
+            <a href="register/index.html" class="register-btn">Register</a>
+        </div>
+
+        <!-- DevOps Section -->
+        <div class="section">
+            <img src="images/devops-logo.gif" alt="DevOps Logo">
+            <h3>DevOps</h3>
+            <a href="register/index.html" class="register-btn">Register</a>
+        </div>
+
+        <!-- Terraform Section -->
+        <div class="section">
+            <img src="images/terraform-logo.jpg" alt="Terraform Logo">
+            <h3>Terraform</h3>
+            <a href="register/index.html" class="register-btn">Register</a>
+        </div>
     </div>
 
 </body>
