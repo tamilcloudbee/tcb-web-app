@@ -135,7 +135,13 @@
                 body: JSON.stringify({ studentName, course, email, mobile, query })
             })
             .then(response => response.json())
-            .then(data => alert("Thank you for your enquiry!"))
+            .then(data => {
+                if(data.success) {
+                    alert("Thank you for your enquiry!");
+                } else {
+                    alert("There was an issue with your submission.");
+                }
+            })
             .catch((error) => {
                 console.error('Error:', error);
                 alert('There was an error submitting your enquiry.');
