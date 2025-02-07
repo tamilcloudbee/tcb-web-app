@@ -126,17 +126,23 @@
                 return false;
             }
 
-            // Submit the data to the ALB
+            // Submit the data to the FastAPI endpoint
             fetch('http://your-alb-url.com/register', {
                 method: 'POST',
                 headers: {
-                    'Content-Type': 'application/x-www-form-urlencoded',
+                    'Content-Type': 'application/x-www-form-urlencoded', // Update content type
                 },
-                body: JSON.stringify({ studentName, course, email, mobile, query })
+                body: new URLSearchParams({
+                    name: studentName,
+                    course: course,
+                    email: email,
+                    phone: mobile,
+                    message: query,
+                })
             })
             .then(response => response.json())
             .then(data => {
-                if(data.success) {
+                if (data.status === "success") {
                     alert("Thank you for your enquiry!");
                 } else {
                     alert("There was an issue with your submission.");
