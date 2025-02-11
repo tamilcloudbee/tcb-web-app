@@ -67,7 +67,7 @@
     <!-- Table Container -->
     <div class="table-container">
         <div id="errorMessage" class="error-message"></div>
-        <table id="enquiriesTable">
+        <table id="api/enquiriesTable">
             <thead>
                 <tr>
                     <th>Name</th>
@@ -84,19 +84,19 @@
     </div>
 
     <script>
-        // Fetch and display all enquiries from the backend
+        // Fetch and display all api/enquiries from the backend
         window.onload = function() {
             fetchEnquiries();
         }
 
         function fetchEnquiries() {
-            fetch('http://your-alb-url.com/enquiries')  // Replace with your backend URL
+            fetch('http://your-alb-url.com/api/enquiries')  // Replace with your backend URL
             .then(response => response.json())
             .then(data => {
                 if (Array.isArray(data) && data.length > 0) {
                     populateTable(data);
                 } else {
-                    document.getElementById('errorMessage').innerText = 'No enquiries found.';
+                    document.getElementById('errorMessage').innerText = 'No api/enquiries found.';
                 }
             })
             .catch(error => {
@@ -105,11 +105,11 @@
             });
         }
 
-        function populateTable(enquiries) {
-            const tableBody = document.getElementById('enquiriesTable').getElementsByTagName('tbody')[0];
+        function populateTable(api/enquiries) {
+            const tableBody = document.getElementById('api/enquiriesTable').getElementsByTagName('tbody')[0];
             tableBody.innerHTML = '';  // Clear any existing rows
 
-            enquiries.forEach(enquiry => {
+            api/enquiries.forEach(enquiry => {
                 const row = document.createElement('tr');
                 
                 const nameCell = document.createElement('td');
