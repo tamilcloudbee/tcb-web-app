@@ -6,7 +6,7 @@
     <title>Admin - Student Course Enquiries</title>
     <style>
         body {
-            background-color: #f4f4f9; /* Light background color */
+            background-color: #f4f4f9;
             font-family: Arial, sans-serif;
             display: flex;
             justify-content: center;
@@ -18,7 +18,7 @@
 
         h1 {
             margin-bottom: 30px;
-            color: #800020; /* Burgundy color */
+            color: #800020;
         }
 
         .table-container {
@@ -42,7 +42,7 @@
         }
 
         th {
-            background-color: #800020; /* Burgundy color */
+            background-color: #800020;
             color: white;
         }
 
@@ -64,10 +64,9 @@
 
     <h1>Student Course Enquiries - Admin</h1>
 
-    <!-- Table Container -->
     <div class="table-container">
         <div id="errorMessage" class="error-message"></div>
-        <table id="api/enquiriesTable">
+        <table id="enquiriesTable">
             <thead>
                 <tr>
                     <th>Name</th>
@@ -84,52 +83,57 @@
     </div>
 
     <script>
-        // Fetch and display all api/enquiries from the backend
+        // Fetch and display enquiries from the backend
         window.onload = function() {
             fetchEnquiries();
-        }
+        };
 
         function fetchEnquiries() {
-            fetch('http://your-alb-url.com/api/enquiries/')  // Replace with your backend URL
-            .then(response => response.json())
+            fetch('http://your-alb-url.com/api/enquiries/')  // Ensure this URL is correct
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                return response.json();
+            })
             .then(data => {
                 if (Array.isArray(data) && data.length > 0) {
                     populateTable(data);
                 } else {
-                    document.getElementById('errorMessage').innerText = 'No api/enquiries found.';
+                    document.getElementById('errorMessage').innerText = 'No enquiries found.';
                 }
             })
             .catch(error => {
                 console.error('Error:', error);
-                document.getElementById('errorMessage').innerText = 'Error fetching data from server.';
+                document.getElementById('errorMessage').innerText = 'Error fetching data from the server.';
             });
         }
 
         function populateTable(enquiries) {
             const tableBody = document.getElementById('enquiriesTable').getElementsByTagName('tbody')[0];
-            tableBody.innerHTML = '';  // Clear any existing rows
+            tableBody.innerHTML = '';  // Clear existing rows
 
-            api/enquiries.forEach(enquiry => {
+            enquiries.forEach(enquiry => {
                 const row = document.createElement('tr');
                 
                 const nameCell = document.createElement('td');
-                nameCell.textContent = enquiry.name;
+                nameCell.textContent = enquiry.name || 'N/A';
                 row.appendChild(nameCell);
 
                 const courseCell = document.createElement('td');
-                courseCell.textContent = enquiry.course;
+                courseCell.textContent = enquiry.course || 'N/A';
                 row.appendChild(courseCell);
 
                 const emailCell = document.createElement('td');
-                emailCell.textContent = enquiry.email;
+                emailCell.textContent = enquiry.email || 'N/A';
                 row.appendChild(emailCell);
 
                 const phoneCell = document.createElement('td');
-                phoneCell.textContent = enquiry.phone;
+                phoneCell.textContent = enquiry.phone || 'N/A';
                 row.appendChild(phoneCell);
 
                 const messageCell = document.createElement('td');
-                messageCell.textContent = enquiry.message;
+                messageCell.textContent = enquiry.message || 'N/A';
                 row.appendChild(messageCell);
 
                 tableBody.appendChild(row);
@@ -139,5 +143,4 @@
 
 </body>
 </html>
-
 
