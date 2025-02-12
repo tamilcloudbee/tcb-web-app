@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin - Student Course Enquiries</title>
+    <style>
+        body {
+            background-color: #f4f4f9; /* Light background color */
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            flex-direction: column;
+        }
+
+        h1 {
+            margin-bottom: 30px;
+            color: #800020; /* Burgundy color */
+        }
+
+        .table-container {
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.1);
+            width: 80%;
+            overflow-x: auto;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            text-align: left;
+        }
+
+        th, td {
+            padding: 12px;
+            border: 1px solid #ddd;
+        }
+
+        th {
+            background-color: #800020; /* Burgundy color */
+            color: white;
+        }
+
+        td {
+            background-color: #f9f9f9;
+        }
+
+        tr:hover td {
+            background-color: #f1f1f1;
+        }
+
+        .error-message {
+            color: red;
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Student Course Enquiries - Admin</h1>
+
+    <!-- Table Container -->
+    <div class="table-container">
+        <div id="errorMessage" class="error-message"></div>
+        <table id="api/enquiriesTable">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Course</th>
+                    <th>Email</th>
+                    <th>Phone</th>
+                    <th>Message</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Data will be dynamically inserted here -->
+            </tbody>
+        </table>
+    </div>
+
+    <script>
+        // Fetch and display all api/enquiries from the backend
+        window.onload = function() {
+            fetchEnquiries();
+        }
+
+        function fetchEnquiries() {
+            fetch('http://your-alb-url.com/api/enquiries/')  // Replace with your backend URL
+            .then(response => response.json())
+            .then(data => {
+                if (Array.isArray(data) && data.length > 0) {
+                    populateTable(data);
+                } else {
+                    document.getElementById('errorMessage').innerText = 'No api/enquiries found.';
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                document.getElementById('errorMessage').innerText = 'Error fetching data from server.';
+            });
+        }
+
+        function populateTable(api/enquiries) {
+            const tableBody = document.getElementById('api/enquiriesTable').getElementsByTagName('tbody')[0];
+            tableBody.innerHTML = '';  // Clear any existing rows
+
+            api/enquiries.forEach(enquiry => {
+                const row = document.createElement('tr');
+                
+                const nameCell = document.createElement('td');
+                nameCell.textContent = enquiry.name;
+                row.appendChild(nameCell);
+
+                const courseCell = document.createElement('td');
+                courseCell.textContent = enquiry.course;
+                row.appendChild(courseCell);
+
+                const emailCell = document.createElement('td');
+                emailCell.textContent = enquiry.email;
+                row.appendChild(emailCell);
+
+                const phoneCell = document.createElement('td');
+                phoneCell.textContent = enquiry.phone;
+                row.appendChild(phoneCell);
+
+                const messageCell = document.createElement('td');
+                messageCell.textContent = enquiry.message;
+                row.appendChild(messageCell);
+
+                tableBody.appendChild(row);
+            });
+        }
+    </script>
+
+</body>
+</html>
